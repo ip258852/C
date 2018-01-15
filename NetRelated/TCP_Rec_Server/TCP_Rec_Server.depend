@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1503390967 source:/home/jedidia/Documents/Kobe/NetRelated/TCP_Rec_Server/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<sys/types.h>
+	<sys/socket.h>
+	<netdb.h>
+	<errno.h>
+	<netinet/in.h>
+	<arpa/inet.h>
+	<unistd.h>
+	<poll.h>
+

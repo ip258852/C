@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1502346343 source:/home/jedidia/Documents/Kobe/NetRelated/TCP_Send_Client/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<sys/types.h>
+	<sys/socket.h>
+	<netdb.h>
+	<netinet/in.h>
+	<arpa/inet.h>
+	<unistd.h>
+

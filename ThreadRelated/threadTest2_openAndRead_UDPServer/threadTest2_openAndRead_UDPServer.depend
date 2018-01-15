@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1505283428 source:/home/jedidia/Documents/Kobe/ThreadRelated/threadTest2_openAndRead_UDPServer/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<sys/types.h>
+	<sys/socket.h>
+	<netdb.h>
+	<netinet/in.h>
+	<arpa/inet.h>
+	<unistd.h>
+	<pthread.h>
+

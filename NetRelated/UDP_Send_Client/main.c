@@ -1,0 +1,83 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <arpa/inet.h>
+#include <netdb.h>
+#include <netinet/in.h>
+#include <unistd.h>
+
+#define BUFSIZE 512
+
+//struct addrinfo *p;
+
+int sockClientCreate(int *sock,struct addrinfo **server,char *ip,char *port);
+
+int main(int argc, char* argv[])
+{
+    int sock;
+    char buf[BUFSIZE]="I am Kobe ";
+
+    struct addrinfo *p=NULL;
+
+	printf("hi");	
+
+    sockClientCreate(&sock,&p,"172.16.10.99","9487");
+
+    while(1){
+        sendto(sock,buf,strlen(buf),0,p->ai_addr,p->ai_addrlen);
+        sleep(1);
+    }
+
+    close(sock);
+
+    return 0;
+
+}
+
+int sockClientCreate(int *sock,struct addrinfo **server,char *ip,char *port){
+
+    int status;
+    int yes=1;
+    struct addrinfo hint,*infor;
+    struct addrinfo *p1=malloc(sizeof(*p1));
+
+    memset(&hint,0,sizeof(hint));
+
+    hint.ai_family=AF_UNSPEC;
+    hint.ai_socktype=SOCK_DGRAM;
+
+    if((status=getaddrinfo(ip,port,&hint,&infor))!=0){
+        printf("getaddrinfo error\n");
+        return 1;
+    }
+
+    //check addrinfotmation for "One" socket use,then,create socket() & bind()
+    for(p1=infor;p1!=NULL;p1=p1->ai_next){
+        if (p1->ai_family == AF_INET){
+            if((*sock=socket(p1->ai_family,p1->ai_socktype,p1->ai_protocol))==-1){
+                printf("socket error\n");
+                continue ;
+            }
+
+            if (setsockopt(*sock,SOL_SOCKET,SO_REUSEADDR,&yes,sizeof(int)) == -1) {
+                printf("setsockopt error\n");
+                return 1;
+            }
+        }
+
+        break;
+    }
+
+    if(p1==NULL){
+        printf("addrinfot error\n");
+        return 1;
+    }
+
+    *server=p1;
+
+    freeaddrinfo(infor);
+
+    return 0;
+}

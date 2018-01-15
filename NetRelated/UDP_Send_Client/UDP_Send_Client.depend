@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1504772526 source:/home/jedidia/Documents/Kobe/NetRelated/UDP_Send_Client/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<sys/types.h>
+	<sys/socket.h>
+	<arpa/inet.h>
+	<netdb.h>
+	<netinet/in.h>
+	<unistd.h>
+

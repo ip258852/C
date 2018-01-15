@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1505274050 source:/home/jedidia/Documents/Kobe/ThreadRelated/threadTest1_openAndRead/main.c
+	<stdio.h>
+	<stdlib.h>
+	<pthread.h>
+	<unistd.h>
+	<string.h>
+	<sys/types.h>
+	<sys/socket.h>
+	<arpa/inet.h>
+	<netdb.h>
+	<netinet/in.h>
+	<dirent.h>
+

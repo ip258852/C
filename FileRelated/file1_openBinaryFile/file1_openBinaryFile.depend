@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1505184239 source:/home/jedidia/Documents/Kobe/FileRelated/file1_openBinaryFile/main.c
+	<stdio.h>
+	<stdlib.h>
+	<unistd.h>
+

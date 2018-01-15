@@ -1,0 +1,118 @@
+/*
+  Author     : Kobe
+  Date       : 20170719
+  Description: fileRead2Char*
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <memory.h>
+
+#define BUF_SIZE 206
+
+void get_token(char *topic,char **answer,char delimiter );
+void check_file_open(FILE *paperfile);
+int  check_file_line(FILE *target);
+void get_file_line_sentence(FILE *target,char **data);
+
+int main()
+{
+    FILE *target;
+    char buf[BUF_SIZE]={""};   //FILE Buffer
+    char **data;
+
+    int line;
+    int i;
+
+    target=fopen("paper.txt","r");
+
+    check_file_open(target);
+    line=check_file_line(target);
+
+    data= (char**)malloc(sizeof(char*)*line);
+    for(i=0;i<line;i++){
+        data[i]=(char*)malloc(sizeof(char)*BUF_SIZE);
+
+    }
+
+    get_file_line_sentence(target,data);
+
+    return 0;
+}
+
+/*
+  @par:target
+  @return:None
+*/
+void check_file_open(FILE *target){
+    if(target)
+        printf("The fileOpen is OK.\n");
+    else{
+        printf("Wrong\n");
+    }//End for if-else
+}
+
+/*
+  return how many lines in .txt
+  @par:target
+  @return:line
+*/
+int  check_file_line(FILE *target){
+    char *ptr;
+    char rbuf[BUF_SIZE]={""};    //rLine Buffer
+    int  line_cnt=0;
+    int  readSize;
+
+    while(1){
+        memset(rbuf,' ',sizeof(rbuf));
+        readSize=fread(rbuf, 1, BUF_SIZE, target);
+
+        ptr=strchr(rbuf,'\n');
+
+
+        while(ptr != NULL){
+            line_cnt++;
+            ptr=strchr(ptr+1,'\n');
+        }//End for while
+
+        if(BUF_SIZE!=readSize) break;
+
+    }//End for while
+
+    printf("line_cnt is %d\n",line_cnt);
+    fseek(target,0,SEEK_SET);
+
+    return line_cnt;
+}
+
+void get_file_line_sentence(FILE *target,char **data){
+    char *ptr=(char*)malloc(sizeof(char)*BUF_SIZE);
+    char rbuf[BUF_SIZE]={""};    //rLine Buffer
+
+    int i=0;
+    int check=1;
+
+
+    while(fgets(rbuf,BUF_SIZE, target) != NULL){
+        if(strlen(rbuf)==BUF_SIZE-1){
+            check=0;
+        }
+
+        if(check){
+            strcpy(data[i],rbuf);
+        }else{
+            strcpy(data[i],rbuf);
+            while(fgets(rbuf,BUF_SIZE, target) != NULL){
+                strcat(data[i],rbuf);
+                if(strlen(rbuf)!=BUF_SIZE-1){
+
+                    break;
+                }
+            }
+        }
+        check=1;
+        i++;
+
+    }//End for while
+}

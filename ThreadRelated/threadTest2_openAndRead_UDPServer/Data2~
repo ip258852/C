@@ -1,0 +1,578 @@
+Blog Archive for / news /
+
+CppCon 2017 class and presentation on concurrency
+Tuesday, 08 August 2017
+I am pleased to announce that I will be running my "Concurrent Thinking in C++" class at CppCon again this year. Here is the course description:
+
+One of the most difficult issues around designing software with multiple threads of execution is synchronizing data.
+
+Whether you use actors, active objects, futures and continuations or mutable shared state, every non-trivial system with multiple threads needs to transfer data between them. This means thinking about which data needs to be processed by which thread, and ensuring that the right data gets to the right threads in the right order. It also means thinking about API design to avoid race conditions.
+
+In this workshop you will encounter a series of scenarios involving multithreaded code, and be guided through identifying the problem areas and the ways of handling them.
+
+You will learn techniques for thinking about the scenarios to ease the analysis, as well as details of the tools we have available in C++ to mitigate the problems. You will also learn how to use the C++ standard library to help enforce the requirements of each scenario in code.
+
+I will also be presenting on "Concurrency, Parallelism and Coroutines":
+
+C++17 is adding parallel overloads of most of the Standard Library algorithms. There is a TS for Concurrency in C++ already published, and a TS for Coroutines in C++ and a second TS for Concurrency in C++ in the works.
+
+What does all this mean for programmers? How are they all related? How do coroutines help with parallelism?
+
+This session will attempt to answer these questions and more. We will look at the implementation of parallel algorithms, and how continuations, coroutines and work-stealing fit together. We will also look at how this meshes with the Grand Unified Executors Proposal, and how you will be able to take advantage of all this as an application developer.
+
+My class is on 17th-18th September, and the main conference is running 19th-23rd, with my presentation on 20th September. If you haven't got your ticket already, head on over to CppCon Registration to get yours now.
+
+Hope to see you there!
+
+Posted by Anthony Williams
+[/ news /] permanent link
+Tags: conferences, cppcon, C++, concurrency, workshop 
+
+ | Stumble It! stumbleupon logo | Submit to Reddit reddit logo | Submit to DZone dzone logo
+Comment on this post
+
+If you liked this post, why not subscribe to the RSS feed RSS feed or Follow me on Twitter? You can also subscribe to this blog by email using the form on the left.
+
+Slides for my ACCU 2017 presentation
+Friday, 12 May 2017
+A couple of weeks ago I presented at the ACCU conference in Bristol (ACCU 2017). The title of my presentation was "Concurrency, Parallelism and Coroutines", and I was talking about the relationship between the Concurrency TS, the Coroutines TS and the Parallel algorithms from C++17:
+
+C++17 is adding parallel overloads of most of the Standard Library algorithms. There is a TS for Concurrency in C++ already published, and a TS for Coroutines in C++ and a second TS for Concurrency in C++ in the works.
+
+What does all this mean for programmers? How are they all related? How do coroutines help with parallelism?
+
+This session will attempt to answer these questions and more. We will look at the implementation of parallel algorithms, and how continuations, coroutines and work-stealing fit together. We will also look at how this meshes with the Grand Unified Executors Proposal, and how you will be able to take advantage of all this as an application developer.
+
+It was well attended, with a lot of interesting questions.
+
+The slides are available here.
+
+This year, my presentation was recorded. The video is available on youtube.
+
+Posted by Anthony Williams
+[/ news /] permanent link
+Tags: C++, concurrency, parallelism, coroutines 
+
+ | Stumble It! stumbleupon logo | Submit to Reddit reddit logo | Submit to DZone dzone logo
+Comment on this post
+
+If you liked this post, why not subscribe to the RSS feed RSS feed or Follow me on Twitter? You can also subscribe to this blog by email using the form on the left.
+
+C++ Concurrency in Action 2nd edition Early Access
+Wednesday, 22 March 2017
+I am happy to announce that the second edition of my book, C++ Concurrency in Action, is now available under the Manning Early Access Program.
+
+ C++ Concurrency in Action 2nd Edition
+
+
+The second edition is being updated to cover C++14, C++17 and the Concurrency TS, along with general improvements throughout the book.
+
+This includes full coverage of the library changes from C++14 and C++17:
+
+std::shared_mutex and std::shared_timed_mutex. These provide for multiple-reader/single-writer mutex locks.
+std::scoped_lock from C++17 for locking multiple mutexes together.
+Parallel overloads of many standard library algorithms include std::sort, std::for_each and std::transform_reduce.
+Plus, full coverage of the library extensions from the concurrency TS:
+
+std::experimental::latch to allow waiting for a set number of events to occur
+std::experimental::barrier and std::experimental::flex_barrier to synchronize groups of threads
+std::experimental::atomic_shared_ptr to allow atomic accesses to a single shared_ptr instance from multiple threads, as a better alternative that the std::atomic_load and std::atomic_store free functions.
+Extended futures that allow continuations, so additional functions can be scheduled for when a future is ready.
+std::experimental::when_all and std::experimental::when_any to allow waiting for either all of a set of futures to be ready, or the first of a set of futures to be ready.
+Only the first few chapters are available at the moment, but if you sign up now, then you will get those chapters in PDF form now, as well as updated PDFs including the later chapters as they become ready, along with updates for the earlier ones, and a final print copy of the book when it's done.
+
+50% Discount
+If you use the code mlwilliams4 at the checkout when you sign up for the MEAP before 27th March 2017 then you'll get a 50% discount.
+
+Posted by Anthony Williams
+[/ news /] permanent link
+Tags: C++, concurrency, multithreading, book 
+
+ | Stumble It! stumbleupon logo | Submit to Reddit reddit logo | Submit to DZone dzone logo
+Comment on this post
+
+If you liked this post, why not subscribe to the RSS feed RSS feed or Follow me on Twitter? You can also subscribe to this blog by email using the form on the left.
+
+Just::Thread Pro v2.4.2 released with clang support
+Thursday, 16 March 2017
+I am pleased to announce that Just::Thread Pro v2.4.2 has been released with support for clang on linux.
+
+Just::Thread Pro is our C++ concurrency extensions library which provides an Actor framework for easier concurrency, along with concurrent data structures: a thread-safe queue, and concurrent hash map, and a wrapper for ensuring synchronized access to single objects.
+
+It also includes the new facilities from the Concurrency TS:
+
+Latches
+Barriers
+atomic_shared_ptr and atomic_weak_ptr
+future::then()
+when_any()
+when_all()
+Clang support is finally here!
+V2.4.2 adds the much-anticipated support for clang. clang 3.8 and 3.9 are supported on ubuntu 16.04 or later, clang 3.8 is supported on Fedora 24, and clang 3.9 on Fedora 25.
+
+Just::Thread Pro is now fully supported on the following compiler/OS combinations (32-bit and 64-bit):
+
+Microsoft Visual Studio 2015 for Windows
+Microsoft Visual Studio 2017 for Windows
+gcc 5 for Ubuntu 14.04 or later
+gcc 6 for Ubuntu 14.04 or later
+clang 3.8 for Ubuntu 16.04 or later
+clang 3.9 for Ubuntu 16.04 or later
+gcc 5 for Fedora 22 and 23
+gcc 6 for Fedora 24 and 25
+clang 3.8 for Fedora 24
+clang 3.9 for Fedora 25
+Just::Thread Pro v2.2 is also supported with the Just::Thread compatibility library on the following compiler/OS combinations:
+
+Microsoft Visual Studio 2005, 2008, 2010, 2012 and 2013 for Windows
+TDM gcc 4.5.2, 4.6.1 and 4.8.1 for Windows
+g++ 4.3 or later for Ubuntu 9.04 or later
+g++ 4.4 or later for Fedora 13 or later
+g++ 4.4 for Centos 6
+MacPorts g++ 4.3 to 4.8 on MacOSX Snow Leopard or later
+All licences include a free upgrade to point releases, so if you purchase now you'll get a free upgrade to all 2.x releases of Just::Thread Pro. Purchasers of the older Just::Thread library (now called the compatibility library) may upgrade to Just::Thread Pro for a small fee.
+
+Posted by Anthony Williams
+[/ news /] permanent link
+Tags: just::thread, release, concurrency, multithreading 
+
+ | Stumble It! stumbleupon logo | Submit to Reddit reddit logo | Submit to DZone dzone logo
+Comment on this post
+
+If you liked this post, why not subscribe to the RSS feed RSS feed or Follow me on Twitter? You can also subscribe to this blog by email using the form on the left.
+
+just::thread Pro adds Visual Studio 2017 support
+Wednesday, 08 March 2017
+I am pleased to announce that just::thread Pro now supports Microsoft Visual Studio 2017 on Microsoft Windows.
+
+This adds to the support for Microsoft Visual Studio 2015, g++ 5 and g++ 6 for the just::thread Pro enhancements, which build on top of the platform-supplied version of the C++14 thread library. For older compilers, and for MacOSX, the just::thread compatibility library is still required.
+
+The new build features all the same facilities as the previous release:
+
+A multiple-producer single-consumer FIFO queue, ideal for sending messages to a particular thread
+A synchronized_value class template for synchronizing access to a single object
+A thread-safe hash map
+An Actor framework for simplified design of multi-threaded applications
+A variadic jss::lock_guard class template to allow acquiring multiple locks at once, like the new C++17 std::lock_guard.
+New facilities from the Concurrency TS:
+A lock-free implementation of atomic_shared_ptr and atomic_weak_ptr — see Anthony's earlier blog post on atomic_shared_ptr
+Latches — signal waiting threads once a specified number of count-down events have occurred.
+Barriers — block a group of threads until they are all ready to proceed.
+future::then() — schedule a task to run when a future becomes ready.
+when_any() — create a future that is ready when any of a set of futures is ready.
+when_all() — create a future that is ready when all of a set of futures are ready.
+Get your copy of just::thread Pro
+Purchase your copy and get started now.
+
+As usual, all customers with V2.x licenses of just::thread Pro will get a free upgrade to the new just::thread Pro Standalone edition.
+
+Posted by Anthony Williams
+[/ news /] permanent link
+Tags: multithreading, concurrency, C++11 
+
+ | Stumble It! stumbleupon logo | Submit to Reddit reddit logo | Submit to DZone dzone logo
+Comment on this post
+
+If you liked this post, why not subscribe to the RSS feed RSS feed or Follow me on Twitter? You can also subscribe to this blog by email using the form on the left.
+
+Just::Thread Pro v2.4 released
+Friday, 10 February 2017
+I am pleased to announce that Just::Thread Pro v2.4 has been released.
+
+Just::Thread Pro is our C++ concurrency extensions library which provides an Actor framework for easier concurrency, along with concurrent data structures: a thread-safe queue, and concurrent hash map, and a wrapper for ensuring synchronized access to single objects.
+
+It also includes the new facilities from the Concurrency TS:
+
+Latches
+Barriers
+atomic_shared_ptr and atomic_weak_ptr
+future::then()
+when_any()
+when_all()
+Unwrapping the future
+V2.4 adds automatic future unwrapping, as specified by the Concurrency TS, so a future<T> can be constructed from a future<future<T>>. This also works with continuations, so if your continuation returns a future<T>, the return value from then is still a future<T>, whereas if your continuation returns a T that is not a future, then then returns future<T>.
+
+This is great for continuation-style concurrency, as it allows you to compose continuations easily, and use asynchronous calls within continuations without adding an additional layer of future-wrapping.
+
+std::experimental::future<InitialData> first_task();
+std::experimental::future<IntermediateData> second_task(InitialData data);
+std::experimental::future<FinalData> third_task(IntermediateData data);
+
+std::experimental::future<FinalData> f=first_task.then([](auto data){
+    return second_task(data.get());
+}).then([](auto data){
+    return third_task(data.get());
+});
+New compiler/OS support
+V2.4 also adds support for gcc 5 on Fedora 22 and 23, and gcc 6 on Fedora 24 and 25.
+
+Just::Thread Pro is now fully supported on the following compiler/OS combinations (32-bit and 64-bit):
+
+Microsoft Visual Studio 2015 for Windows
+gcc 5 for Ubuntu 14.04 or later
+gcc 6 for Ubuntu 14.04 or later
+gcc 5 on Fedora 22 and 23
+gcc 6 on Fedora 24 and 25
+Just::Thread Pro v2.2 is also supported with the Just::Thread compatibility library on the following compiler/OS combinations:
+
+Microsoft Visual Studio 2005, 2008, 2010, 2012 and 2013 for Windows
+TDM gcc 4.5.2, 4.6.1 and 4.8.1 for Windows
+g++ 4.3 or later for Ubuntu 9.04 or later
+g++ 4.4 or later for Fedora 13 or later
+g++ 4.4 for Centos 6
+MacPorts g++ 4.3 to 4.8 on MacOSX Snow Leopard or later
+All licences include a free upgrade to point releases, so if you purchase now you'll get a free upgrade to all 2.x releases of Just::Thread Pro.
+
+Posted by Anthony Williams
+[/ news /] permanent link
+Tags: just::thread, release, concurrency, multithreading 
+
+ | Stumble It! stumbleupon logo | Submit to Reddit reddit logo | Submit to DZone dzone logo
+Comment on this post
+
+If you liked this post, why not subscribe to the RSS feed RSS feed or Follow me on Twitter? You can also subscribe to this blog by email using the form on the left.
+
+Christmas Sale
+Tuesday, 06 December 2016
+It's coming up to Christmas, and we're getting in the festive mood, so we're running a sale: Just::Thread Pro will be available for 50% off the normal price until the end of December 2016.
+
+Just::Thread Pro provides high level facilities on top of the C++ Standard Thread Library: an Actor framework for easier concurrency, along with concurrent data structures: a thread-safe queue, and concurrent hash map, and a wrapper for ensuring synchronized access to single objects, as well as an implementation of the Concurrency TS, including atomic_shared_ptr and continuations
+
+All licences include a free upgrade to point releases, so if you purchase now you'll get a free upgrade to all 2.x releases.
+
+Posted by Anthony Williams
+[/ news /] permanent link
+Tags: sale 
+
+ | Stumble It! stumbleupon logo | Submit to Reddit reddit logo | Submit to DZone dzone logo
+Comment on this post
+
+If you liked this post, why not subscribe to the RSS feed RSS feed or Follow me on Twitter? You can also subscribe to this blog by email using the form on the left.
+
+CppCon 2016 Trip Report
+Wednesday, 12 October 2016
+So, CppCon 2016 has finished, and I'm back home and all caught up with "normal" life again. I thought it was about time I wrote up my trip report before it was too late.
+
+Pre-conference Workshop
+For me, the conference started on Saturday 17th September, as I was running a two-day workshop on Concurrent Thinking. This was well-attended, and I had some great conversations with people during the breaks and at the end of each day.
+
+The main conference
+The main conference started on Monday morning, with a keynote from Bjarne Stroustrup on the evolution of C++. He walked us through how far C++ has come since its humble beginnings, and what he hopes to see in the future — essentially all those things he hoped to see in C++17 that didn't make it, plus a couple of extras.
+
+Over the course of the rest of the week there were over 100 sessions across a wide variety of C++-related topics. It was often hard to choose which session to go and see, but since everything was recorded, it was possible to catch up afterwards by watching the CppCon Youtube Channel.
+
+Highlights for me included:
+
+Kenny Kerr and James McNellis on Embracing Standard C++ for the Windows Runtime (Video). Kenny and James talked about the new standard C++ projection for the Windows Runtime, which provides essentially a set of smart pointer wrappers for all the Windows Runtime types to hide the messy COM-style boilerplate that would otherwise be required. They compared a simple .NET app, the pages of boilerplate code required today in C++ to do the same, and then showed how it is again simple with the new library. I look forward to being able to use it for writing Windows-based applications.
+
+Hartmut Kaiser on Parallelism in Modern C++ (Video). Hartmut talked about the new parallel STL, how futures and asynchronous operations work together to take advantage of parallel hardware, and issues like data placement, vectorization, and the potential for moving work to GPUs.
+
+Michael Spencer on My Little Optimizer: Undefined Behavior is Magic (Video). Michael showed how the presence of undefined behaviour can drasticly change the output of code generated by an optimizing compiler, and can actually let it generate better code. This was very interesting to see. We all know that we need to avoid undefined behaviour, but it's enlightening to see how the existence of undefined behaviour at all can improve optimization.
+Every presentation I watched was great, but these stood out. I still have a long list of sessions I'm going to watch on video; there is just so much to take in.
+
+The plenary was by Herb Sutter, who talked about "Leak Freedom by default". The first half of the talk was a summary of what we have in the standard library today — std::unique_ptr<T> and std::shared_ptr<T> do most of the heavy lifting. He showed a poster "to stick on your colleague's wall" showing which to use when. The remainder of the talk was discussion around the remaining cases, notably those data structures with cycles, which are not well-supported by today's standard library. In particular, Herb introduced his "experimental" deferred-reclamation (i.e. Garbage Collection) library, which uses a custom heap and deferred_ptr<T> to allow you to detect and destroy unreachable objects. This got me thinking if there was another way to do it, which will be the subject of a later blog post.
+
+The people
+By far the best part of the conference is the people. I had many in-depth discussions with people that would be hard to have via email. It was great to meet people face to face; some I was meeting for the first time, and others who I haven't met in person for years.
+
+While you can watch the videos and read the slides without attending, there is no substitute for the in-person interactions.
+
+My sessions
+As well as the workshop, I presented a talk on The Continuing Future of C++ Concurrency, which was on Tuesday afternoon, and then I was on the panel for the final session of the conference: Implementing the C++ Standard Library on Friday afternoon.
+
+As for the other sessions, videos are available on the CppCon Youtube channel:
+
+The Continuing Future of C++ Concurrency Video
+
+Implementing the C++ Standard Library Video
+Plus, you can also download my slides for The Continuing Future of C++ Concurrency.
+
+Posted by Anthony Williams
+[/ news /] permanent link
+Tags: conferences, cppcon, C++, concurrency, workshop, slides 
+
+ | Stumble It! stumbleupon logo | Submit to Reddit reddit logo | Submit to DZone dzone logo
+Comment on this post
+
+If you liked this post, why not subscribe to the RSS feed RSS feed or Follow me on Twitter? You can also subscribe to this blog by email using the form on the left.
+
+CppCon 2016 Workshop and Talk
+Monday, 08 August 2016
+I will be running my new 2-day workshop on Concurrent Thinking, as well as doing a session on The Continuing Future of Concurrency in C++ at CppCon 2016 in September.
+
+
+My workshop is on 17th-18th September, and the main conference is running 19th-23rd. If you haven't got your ticket already, head on over to CppCon Registration to get yours now.
+
+Hope to see you there!
+
+Posted by Anthony Williams
+[/ news /] permanent link
+Tags: conferences, cppcon, C++, concurrency, workshop
+Blog Archive for / news /
+
+CppCon 2017 class and presentation on concurrency
+Tuesday, 08 August 2017
+I am pleased to announce that I will be running my "Concurrent Thinking in C++" class at CppCon again this year. Here is the course description:
+
+One of the most difficult issues around designing software with multiple threads of execution is synchronizing data.
+
+Whether you use actors, active objects, futures and continuations or mutable shared state, every non-trivial system with multiple threads needs to transfer data between them. This means thinking about which data needs to be processed by which thread, and ensuring that the right data gets to the right threads in the right order. It also means thinking about API design to avoid race conditions.
+
+In this workshop you will encounter a series of scenarios involving multithreaded code, and be guided through identifying the problem areas and the ways of handling them.
+
+You will learn techniques for thinking about the scenarios to ease the analysis, as well as details of the tools we have available in C++ to mitigate the problems. You will also learn how to use the C++ standard library to help enforce the requirements of each scenario in code.
+
+I will also be presenting on "Concurrency, Parallelism and Coroutines":
+
+C++17 is adding parallel overloads of most of the Standard Library algorithms. There is a TS for Concurrency in C++ already published, and a TS for Coroutines in C++ and a second TS for Concurrency in C++ in the works.
+
+What does all this mean for programmers? How are they all related? How do coroutines help with parallelism?
+
+This session will attempt to answer these questions and more. We will look at the implementation of parallel algorithms, and how continuations, coroutines and work-stealing fit together. We will also look at how this meshes with the Grand Unified Executors Proposal, and how you will be able to take advantage of all this as an application developer.
+
+My class is on 17th-18th September, and the main conference is running 19th-23rd, with my presentation on 20th September. If you haven't got your ticket already, head on over to CppCon Registration to get yours now.
+
+Hope to see you there!
+
+Posted by Anthony Williams
+[/ news /] permanent link
+Tags: conferences, cppcon, C++, concurrency, workshop 
+
+ | Stumble It! stumbleupon logo | Submit to Reddit reddit logo | Submit to DZone dzone logo
+Comment on this post
+
+If you liked this post, why not subscribe to the RSS feed RSS feed or Follow me on Twitter? You can also subscribe to this blog by email using the form on the left.
+
+Slides for my ACCU 2017 presentation
+Friday, 12 May 2017
+A couple of weeks ago I presented at the ACCU conference in Bristol (ACCU 2017). The title of my presentation was "Concurrency, Parallelism and Coroutines", and I was talking about the relationship between the Concurrency TS, the Coroutines TS and the Parallel algorithms from C++17:
+
+C++17 is adding parallel overloads of most of the Standard Library algorithms. There is a TS for Concurrency in C++ already published, and a TS for Coroutines in C++ and a second TS for Concurrency in C++ in the works.
+
+What does all this mean for programmers? How are they all related? How do coroutines help with parallelism?
+
+This session will attempt to answer these questions and more. We will look at the implementation of parallel algorithms, and how continuations, coroutines and work-stealing fit together. We will also look at how this meshes with the Grand Unified Executors Proposal, and how you will be able to take advantage of all this as an application developer.
+
+It was well attended, with a lot of interesting questions.
+
+The slides are available here.
+
+This year, my presentation was recorded. The video is available on youtube.
+
+Posted by Anthony Williams
+[/ news /] permanent link
+Tags: C++, concurrency, parallelism, coroutines 
+
+ | Stumble It! stumbleupon logo | Submit to Reddit reddit logo | Submit to DZone dzone logo
+Comment on this post
+
+If you liked this post, why not subscribe to the RSS feed RSS feed or Follow me on Twitter? You can also subscribe to this blog by email using the form on the left.
+
+C++ Concurrency in Action 2nd edition Early Access
+Wednesday, 22 March 2017
+I am happy to announce that the second edition of my book, C++ Concurrency in Action, is now available under the Manning Early Access Program.
+
+ C++ Concurrency in Action 2nd Edition
+
+
+The second edition is being updated to cover C++14, C++17 and the Concurrency TS, along with general improvements throughout the book.
+
+This includes full coverage of the library changes from C++14 and C++17:
+
+std::shared_mutex and std::shared_timed_mutex. These provide for multiple-reader/single-writer mutex locks.
+std::scoped_lock from C++17 for locking multiple mutexes together.
+Parallel overloads of many standard library algorithms include std::sort, std::for_each and std::transform_reduce.
+Plus, full coverage of the library extensions from the concurrency TS:
+
+std::experimental::latch to allow waiting for a set number of events to occur
+std::experimental::barrier and std::experimental::flex_barrier to synchronize groups of threads
+std::experimental::atomic_shared_ptr to allow atomic accesses to a single shared_ptr instance from multiple threads, as a better alternative that the std::atomic_load and std::atomic_store free functions.
+Extended futures that allow continuations, so additional functions can be scheduled for when a future is ready.
+std::experimental::when_all and std::experimental::when_any to allow waiting for either all of a set of futures to be ready, or the first of a set of futures to be ready.
+Only the first few chapters are available at the moment, but if you sign up now, then you will get those chapters in PDF form now, as well as updated PDFs including the later chapters as they become ready, along with updates for the earlier ones, and a final print copy of the book when it's done.
+
+50% Discount
+If you use the code mlwilliams4 at the checkout when you sign up for the MEAP before 27th March 2017 then you'll get a 50% discount.
+
+Posted by Anthony Williams
+[/ news /] permanent link
+Tags: C++, concurrency, multithreading, book 
+
+ | Stumble It! stumbleupon logo | Submit to Reddit reddit logo | Submit to DZone dzone logo
+Comment on this post
+
+If you liked this post, why not subscribe to the RSS feed RSS feed or Follow me on Twitter? You can also subscribe to this blog by email using the form on the left.
+
+Just::Thread Pro v2.4.2 released with clang support
+Thursday, 16 March 2017
+I am pleased to announce that Just::Thread Pro v2.4.2 has been released with support for clang on linux.
+
+Just::Thread Pro is our C++ concurrency extensions library which provides an Actor framework for easier concurrency, along with concurrent data structures: a thread-safe queue, and concurrent hash map, and a wrapper for ensuring synchronized access to single objects.
+
+It also includes the new facilities from the Concurrency TS:
+
+Latches
+Barriers
+atomic_shared_ptr and atomic_weak_ptr
+future::then()
+when_any()
+when_all()
+Clang support is finally here!
+V2.4.2 adds the much-anticipated support for clang. clang 3.8 and 3.9 are supported on ubuntu 16.04 or later, clang 3.8 is supported on Fedora 24, and clang 3.9 on Fedora 25.
+
+Just::Thread Pro is now fully supported on the following compiler/OS combinations (32-bit and 64-bit):
+
+Microsoft Visual Studio 2015 for Windows
+Microsoft Visual Studio 2017 for Windows
+gcc 5 for Ubuntu 14.04 or later
+gcc 6 for Ubuntu 14.04 or later
+clang 3.8 for Ubuntu 16.04 or later
+clang 3.9 for Ubuntu 16.04 or later
+gcc 5 for Fedora 22 and 23
+gcc 6 for Fedora 24 and 25
+clang 3.8 for Fedora 24
+clang 3.9 for Fedora 25
+Just::Thread Pro v2.2 is also supported with the Just::Thread compatibility library on the following compiler/OS combinations:
+
+Microsoft Visual Studio 2005, 2008, 2010, 2012 and 2013 for Windows
+TDM gcc 4.5.2, 4.6.1 and 4.8.1 for Windows
+g++ 4.3 or later for Ubuntu 9.04 or later
+g++ 4.4 or later for Fedora 13 or later
+g++ 4.4 for Centos 6
+MacPorts g++ 4.3 to 4.8 on MacOSX Snow Leopard or later
+All licences include a free upgrade to point releases, so if you purchase now you'll get a free upgrade to all 2.x releases of Just::Thread Pro. Purchasers of the older Just::Thread library (now called the compatibility library) may upgrade to Just::Thread Pro for a small fee.
+
+Posted by Anthony Williams
+[/ news /] permanent link
+Tags: just::thread, release, concurrency, multithreading 
+
+ | Stumble It! stumbleupon logo | Submit to Reddit reddit logo | Submit to DZone dzone logo
+Comment on this post
+
+If you liked this post, why not subscribe to the RSS feed RSS feed or Follow me on Twitter? You can also subscribe to this blog by email using the form on the left.
+
+just::thread Pro adds Visual Studio 2017 support
+Wednesday, 08 March 2017
+I am pleased to announce that just::thread Pro now supports Microsoft Visual Studio 2017 on Microsoft Windows.
+
+This adds to the support for Microsoft Visual Studio 2015, g++ 5 and g++ 6 for the just::thread Pro enhancements, which build on top of the platform-supplied version of the C++14 thread library. For older compilers, and for MacOSX, the just::thread compatibility library is still required.
+
+The new build features all the same facilities as the previous release:
+
+A multiple-producer single-consumer FIFO queue, ideal for sending messages to a particular thread
+A synchronized_value class template for synchronizing access to a single object
+A thread-safe hash map
+An Actor framework for simplified design of multi-threaded applications
+A variadic jss::lock_guard class template to allow acquiring multiple locks at once, like the new C++17 std::lock_guard.
+New facilities from the Concurrency TS:
+A lock-free implementation of atomic_shared_ptr and atomic_weak_ptr — see Anthony's earlier blog post on atomic_shared_ptr
+Latches — signal waiting threads once a specified number of count-down events have occurred.
+Barriers — block a group of threads until they are all ready to proceed.
+future::then() — schedule a task to run when a future becomes ready.
+when_any() — create a future that is ready when any of a set of futures is ready.
+when_all() — create a future that is ready when all of a set of futures are ready.
+Get your copy of just::thread Pro
+Purchase your copy and get started now.
+
+As usual, all customers with V2.x licenses of just::thread Pro will get a free upgrade to the new just::thread Pro Standalone edition.
+
+Posted by Anthony Williams
+[/ news /] permanent link
+Tags: multithreading, concurrency, C++11 
+
+ | Stumble It! stumbleupon logo | Submit to Reddit reddit logo | Submit to DZone dzone logo
+Comment on this post
+
+If you liked this post, why not subscribe to the RSS feed RSS feed or Follow me on Twitter? You can also subscribe to this blog by email using the form on the left.
+
+Just::Thread Pro v2.4 released
+Friday, 10 February 2017
+I am pleased to announce that Just::Thread Pro v2.4 has been released.
+
+Just::Thread Pro is our C++ concurrency extensions library which provides an Actor framework for easier concurrency, along with concurrent data structures: a thread-safe queue, and concurrent hash map, and a wrapper for ensuring synchronized access to single objects.
+
+It also includes the new facilities from the Concurrency TS:
+
+Latches
+Barriers
+atomic_shared_ptr and atomic_weak_ptr
+future::then()
+when_any()
+when_all()
+Unwrapping the future
+V2.4 adds automatic future unwrapping, as specified by the Concurrency TS, so a future<T> can be constructed from a future<future<T>>. This also works with continuations, so if your continuation returns a future<T>, the return value from then is still a future<T>, whereas if your continuation returns a T that is not a future, then then returns future<T>.
+
+This is great for continuation-style concurrency, as it allows you to compose continuations easily, and use asynchronous calls within continuations without adding an additional layer of future-wrapping.
+
+std::experimental::future<InitialData> first_task();
+std::experimental::future<IntermediateData> second_task(InitialData data);
+std::experimental::future<FinalData> third_task(IntermediateData data);
+
+std::experimental::future<FinalData> f=first_task.then([](auto data){
+    return second_task(data.get());
+}).then([](auto data){
+    return third_task(data.get());
+});
+New compiler/OS support
+V2.4 also adds support for gcc 5 on Fedora 22 and 23, and gcc 6 on Fedora 24 and 25.
+
+Just::Thread Pro is now fully supported on the following compiler/OS combinations (32-bit and 64-bit):
+
+Microsoft Visual Studio 2015 for Windows
+gcc 5 for Ubuntu 14.04 or later
+gcc 6 for Ubuntu 14.04 or later
+gcc 5 on Fedora 22 and 23
+gcc 6 on Fedora 24 and 25
+Just::Thread Pro v2.2 is also supported with the Just::Thread compatibility library on the following compiler/OS combinations:
+
+Microsoft Visual Studio 2005, 2008, 2010, 2012 and 2013 for Windows
+TDM gcc 4.5.2, 4.6.1 and 4.8.1 for Windows
+g++ 4.3 or later for Ubuntu 9.04 or later
+g++ 4.4 or later for Fedora 13 or later
+g++ 4.4 for Centos 6
+MacPorts g++ 4.3 to 4.8 on MacOSX Snow Leopard or later
+All licences include a free upgrade to point releases, so if you purchase now you'll get a free upgrade to all 2.x releases of Just::Thread Pro.
+
+Posted by Anthony Williams
+[/ news /] permanent link
+Tags: just::thread, release, concurrency, multithreading 
+
+ | Stumble It! stumbleupon logo | Submit to Reddit reddit logo | Submit to DZone dzone logo
+Comment on this post
+
+If you liked this post, why not subscribe to the RSS feed RSS feed or Follow me on Twitter? You can also subscribe to this blog by email using the form on the left.
+
+Christmas Sale
+Tuesday, 06 December 2016
+It's coming up to Christmas, and we're getting in the festive mood, so we're running a sale: Just::Thread Pro will be available for 50% off the normal price until the end of December 2016.
+
+Just::Thread Pro provides high level facilities on top of the C++ Standard Thread Library: an Actor framework for easier concurrency, along with concurrent data structures: a thread-safe queue, and concurrent hash map, and a wrapper for ensuring synchronized access to single objects, as well as an implementation of the Concurrency TS, including atomic_shared_ptr and continuations
+
+All licences include a free upgrade to point releases, so if you purchase now you'll get a free upgrade to all 2.x releases.
+
+Posted by Anthony Williams
+[/ news /] permanent link
+Tags: sale 
+
+ | Stumble It! stumbleupon logo | Submit to Reddit reddit logo | Submit to DZone dzone logo
+Comment on this post
+
+If you liked this post, why not subscribe to the RSS feed RSS feed or Follow me on Twitter? You can also subscribe to this blog by email using the form on the left.
+
+CppCon 2016 Trip Report
+Wednesday, 12 October 2016
+So, CppCon 2016 has finished, and I'm back home and all caught up with "normal" life again. I thought it was about time I wrote up my trip report before it was too late.
+
+Pre-conference Workshop
+For me, the conference started on Saturday 17th September, as I was running a two-day workshop on Concurrent Thinking. This was well-attended, and I had some great conversations with people during the breaks and at the end of each day.
+
+The main conference
+The main conference started on Monday morning, with a keynote from Bjarne Stroustrup on the evolution of C++. He walked us through how far C++ has come since its humble beginnings, and what he hopes to see in the future — essentially all those things he hoped to see in C++17 that didn't make it, plus a couple of extras.
+
+Over the course of the rest of the week there were over 100 sessions across a wide variety of C++-related topics. It was often hard to choose which session to go and see, but since everything was recorded, it was possible to catch up afterwards by watching the CppCon Youtube Channel.
+
+Highlights for me included:
+
+Kenny Kerr and James McNellis on Embracing Standard C++ for the Windows Runtime (Video). Kenny and James talked about the new standard C++ projection for the Windows Runtime, which provides essentially a set of smart pointer wrappers for all the Windows Runtime types to hide the messy COM-style boilerplate that would otherwise be required. They compared a simple .NET app, the pages of boilerplate code required today in C++ to do the same, and then showed how it is again simple with the new library. I look forward to being able to use it for writing Windows-based applications.
+
+Hartmut Kaiser on Parallelism in Modern C++ (Video). Hartmut talked about the new parallel STL, how futures and asynchronous operations work together to take advantage of parallel hardware, and issues like data placement, vectorization, and the potential fo

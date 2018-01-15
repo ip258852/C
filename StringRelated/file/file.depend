@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1496210266 source:/home/jedidia/Documents/Kobe/file/main.c
+	<stdio.h>
+	<stdlib.h>
+

@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1500519190 source:/home/jedidia/Documents/Kobe/Token/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1500519190 source:/home/jedidia/Documents/Kobe/StringRelated/Token/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

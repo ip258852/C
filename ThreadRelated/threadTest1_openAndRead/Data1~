@@ -1,0 +1,29 @@
+
+0
+down vote
+favorite
+I am trying to use the following C code to print out an array that I have passed in. It should output the text in hexadecimal format one on each line and I have no problems opening the file. When I first wrote it, I had no problems with it working I opened the output file and my array was there. I changed the fileOutName parameter and now I can't get it to print out anything I have tried changing it back and to a few other things and nothing seems to work. Also when I debug it seems like pOutfile is a bad pointer, but like I said it still creates the file it just won't write anything in it. Any help would be appreciated. Thanks
+
+printoutput(int output[], char * fileOutName){
+    int i = 0;
+    FILE * pOutfile;
+    pOutfile = fopen( fileOutName, "w" );
+    while(output[i] != 0){
+        fprintf( pOutfile, "0x%0.4X\n", output[i] );
+        i++;
+    }
+}
+c printf
+shareedit
+edited Sep 17 '12 at 13:07
+
+Viktor Dahl
+1,15211732
+asked Sep 17 '12 at 0:55
+
+farnett
+1781315
+3	 	
+always flush :-) fflush(pOutfile); – oldrinb Sep 17 '12 at 0:59 
+  	 	
+Also check the return of fopen. This is one of the API cases where it is nearly mandatory to handle errors. They are very common (no write rights for instance, missing media, file already existing but locked, magical filename that is not allowed to be used by apps (/proc or PRN in windows for example)). – Patrick Schlüter Sep 17 '12 at 13:33

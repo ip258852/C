@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+
+#define BUFSIZE 512
+
+int     writefile(char *buf);
+
+int main()
+{
+    FILE *file,*wfile;
+    char buf[BUFSIZE];
+    int  number;
+
+    file=fopen("TCP_Rec_Server","rb");
+    if(file)
+        printf("open\n");
+    else
+        printf("open error\n");
+
+    wfile=fopen("wTCP_Rec_Server","wb");
+    if(file)
+        printf("open\n");
+    else
+        printf("open error\n");
+
+    while(!feof(file)){
+        number=fread(buf,sizeof(char),BUFSIZE,file);
+        printf("number is [%d]\n",number);
+        fwrite(buf,sizeof(char),number,wfile);
+    }
+
+    fclose(file);
+    fclose(wfile);
+
+
+    return 0;
+}
+int     writefile(char *buf){
+
+}
